@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+
+
+<!-- /shop/product product page -->
+
+<template id="product_extend" inherit_id="website_sale.product" name="Product_extend">
+    <xpath expr="//div[@id='wrap']//section[@id='product_detail']//div[@class='row'][2]" position="after">
+        <div class="row">
+
+
+            <t t-set="value_description" t-value="product._compute_website_description()"/>
+            <t t-if="not value_description">
+                <div class="oe_structure mt16" id="product_website_description_website_shorty" >
+                    <div class="breadcrumb">
+                        <a style="font-size: 21px;font-weight: bold;text-decoration: none;pointer-events: none;cursor: default;">Descripción del Producto:</a>
+                    </div>
+                    <div class="mt16" style="padding: 0px 25px;">
+                        <t t-raw="product.website_description_shorty" />
+                    </div>
+                </div>
+            </t>
+
+            <t t-set="value_features" t-value="product._compute_website_features()"/>
+            <t t-if="not value_features">
+                <div  class="oe_structure mt16" id="product_website_features" >
+                    <div class="breadcrumb">
+                        <a style="font-size: 21px;font-weight: bold;text-decoration: none;pointer-events: none;cursor: default;">Características del Producto:</a>
+                    </div>
+                    <div class="mt16" style="padding: 0px 25px;">
+                        <t t-raw="product.website_features"/>
+                    </div>
+                </div>
+            </t>
+        </div>
+    </xpath>
+</template>
+
+</data>
+</openerp>

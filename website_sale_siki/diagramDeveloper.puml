@@ -1,0 +1,32 @@
+@startuml
+
+
+class product_template_extend {
+
+_inherit = product.template
+_columns = website_description field html (in xml widget=html)
+_columns = website_features field html (in xml widget=html)
+}
+
+product_template_extend --|> views
+
+interface views{
+id = view_product_template_form_extend
+Model = product.template
+InheritViews = product.product_template_form_view
+-------
+xpath //tags group name=social // field = social_googleplus -> position after
+
+}
+
+interface template{
+id =
+Name view = Website settings Boton Insta
+Model = website.config.settings
+InheritViews = product.product_template_form_view
+-------
+xpath //tags group name=social // field = social_googleplus -> position after
+
+}
+
+@enduml
